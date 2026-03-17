@@ -17,15 +17,21 @@ function escape($html) {
 // Generate CSRF Token
 function generateCsrfToken() {
     if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        // Fallback for PHP < 7.0 using openssl_random_pseudo_bytes
+        $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(32));
     }
     return $_SESSION['csrf_token'];
 }
 
 // Verify CSRF Token
 function verifyCsrfToken($token) {
-    if (isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token)) {
-        return true;
+    if (isset($_SESSION['csrf_token'])) {
+        // Fallback for PHP < 5.6
+        if (function_exists('hash_equals')) {
+            return hash_equals($_SESSION['csrf_token'], $token);
+        } else {
+            return $_SESSION['csrf_token'] === $token;
+        }
     }
     return false;
 }
