@@ -22,7 +22,7 @@ $courses_stmt = $conn->prepare("
 $courses_stmt->execute([$teacher_id]);
 $assigned_courses = $courses_stmt->fetchAll();
 
-$selected_course_id = $_GET['course_id'] ?? null;
+$selected_course_id = isset($_GET['course_id']) ? $_GET['course_id'] : null;
 $students = [];
 
 if ($selected_course_id) {

@@ -41,7 +41,7 @@ $logs = $stmt->fetchAll();
                     <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; color: var(--text-muted);"><?php echo escape($log['created_at']); ?></td>
                         <td style="padding: 10px; font-weight:600;">
-                            <?php echo escape($log['username'] ?? 'Système'); ?>
+                            <?php echo escape(isset($log['username']) ? $log['username'] : 'Système'); ?>
                             <?php if ($log['role']): ?>
                                 <span style="font-size: 0.75rem; background: var(--secondary-color); color: white; padding: 2px 6px; border-radius: 4px; margin-left: 5px;"><?php echo escape($log['role']); ?></span>
                             <?php endif; ?>

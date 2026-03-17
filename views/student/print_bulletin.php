@@ -7,7 +7,7 @@ if (!isLoggedIn() || $_SESSION['role'] !== 'student') {
     die("Accès refusé.");
 }
 
-$sem_name = $_GET['semester'] ?? '';
+$sem_name = isset($_GET['semester']) ? $_GET['semester'] : '';
 
 $db = new Database();
 $conn = $db->getConnection();

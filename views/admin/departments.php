@@ -6,7 +6,7 @@ requireRole('admin');
 $db = new Database();
 $conn = $db->getConnection();
 
-$faculty_id = $_GET['faculty_id'] ?? null;
+$faculty_id = isset($_GET['faculty_id']) ? $_GET['faculty_id'] : null;
 
 if (!$faculty_id) {
     setFlashMessage('error', 'Faculté non spécifiée.');

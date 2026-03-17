@@ -114,7 +114,7 @@ $courses = $conn->query("SELECT id, code, name FROM courses ORDER BY code")->fet
                         </td>
                         <td style="padding: 12px; font-size: 0.9rem;">
                             <i class="fas fa-envelope"></i> <?php echo escape($t['email']); ?><br>
-                            <i class="fas fa-phone"></i> <?php echo escape($t['phone'] ?? 'N/A'); ?>
+                            <i class="fas fa-phone"></i> <?php echo escape(isset($t['phone']) ? $t['phone'] : 'N/A'); ?>
                         </td>
                         <td style="padding: 12px;">
                             <button class="btn btn-sm" style="background:#8b5cf6; color:white;" title="Attribuer une matière" onclick="openAssignModal(<?php echo $t['id']; ?>, '<?php echo escape($t['last_name'] . ' ' . $t['first_name']); ?>')">

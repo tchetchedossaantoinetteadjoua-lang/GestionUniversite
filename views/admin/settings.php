@@ -31,7 +31,7 @@ requireRole('admin');
             </tr>
             <tr>
                 <td style="padding: 10px; font-weight: 500; border-bottom: 1px solid var(--border);">Serveur Web</td>
-                <td style="padding: 10px; border-bottom: 1px solid var(--border);"><?php echo $_SERVER['SERVER_SOFTWARE'] ?? 'N/A'; ?></td>
+                <td style="padding: 10px; border-bottom: 1px solid var(--border);"><?php echo isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : 'N/A'; ?></td>
             </tr>
             <tr>
                 <td style="padding: 10px; font-weight: 500; border-bottom: 1px solid var(--border);">Répertoire d'installation</td>

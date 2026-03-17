@@ -10,8 +10,8 @@ if (!defined('ALLOW_UNAUTHENTICATED') && !isLoggedIn()) {
     redirect('/GestionUniversite/index.php');
 }
 
-$role = $_SESSION['role'] ?? 'guest';
-$username = $_SESSION['username'] ?? 'User';
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : 'admin';
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'User';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
