@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 require_once 'includes/functions.php';
 
-// Redirect if already logged in
+// Redirect if already logged in my app
 if (isLoggedIn()) {
     redirect("views/{$_SESSION['role']}/dashboard.php");
 }
